@@ -42,7 +42,7 @@ class CustomReferencedNormalizer implements NormalizerInterface, SerializerAware
 
     public function supportsNormalization(mixed $data, ?string $format = null, ?array $context = []): bool
     {
-        return $data instanceof AbstractNormalizable;
+        return parent::supportsNormalization($data, $format) && $this->supports($data::class);
     }
 
     public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
